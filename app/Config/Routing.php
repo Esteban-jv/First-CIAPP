@@ -94,7 +94,7 @@ class Routing extends BaseRouting
      *
      * If FALSE, will stop searching and do NO automatic routing.
      */
-    public bool $autoRoute = false;
+    public bool $autoRoute = false; // Set true if you don't want to use the default route version (Not recommended)
 
     /**
      * For Defined Routes.

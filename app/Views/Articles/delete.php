@@ -6,6 +6,7 @@
     <p>Are you sure you want to delete the article "<?= esc($article->title) ?>"?</p>
 
     <?= form_open("/articles/delete/".$article->id) ?>
+        <input type="hidden" name="_method" value="DELETE">
         <button type="submit">Yes</button>
     </form>
 <?= $this->endSection() ?>

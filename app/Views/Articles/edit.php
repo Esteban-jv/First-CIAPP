@@ -13,7 +13,8 @@
         </ul>
     <?php endif; ?>
 
-    <?= form_open('articles/edit/'.$article->id) ?>
+    <?= form_open('articles/'.$article->id) ?>
+        <input type="hidden" name="_method" value="PUT">
         <?= $this->include('Articles/form') ?>
     </form>
 <?= $this->endSection() ?>
