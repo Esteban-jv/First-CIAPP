@@ -30,14 +30,14 @@ class Articles extends BaseController
         return view('Articles/show', ['article' => $article]);
     }
 
-    public function create()
+    public function new()
     {
         return view('Articles/create', [
             "article" => new Article
         ]);
     }
 
-    public function store()
+    public function create()
     {
         $article = new Article($this->request->getPost());
         $id = $this->model->insert($article);

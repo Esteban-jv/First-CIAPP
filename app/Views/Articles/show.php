@@ -8,5 +8,5 @@
     <p><?= esc($article->content) ?></p>
 
     <a href="<?= url_to('Articles::edit',$article->id) ?>">Edit</a>
-    <a href="<?= url_to('Articles::delete',$article->id) ?>">Delete</a>
+    <a href="<?= url_to('Articles::confirmDelete',$article->id) ?>">Delete</a>
 <?= $this->endSection() ?>

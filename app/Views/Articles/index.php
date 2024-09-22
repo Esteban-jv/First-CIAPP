@@ -4,7 +4,7 @@
 
 <?= $this->section('content') ?>
     <h1>Articles</h1>
-    <a href="<?= url_to('create_article') ?>">Create new article</a>
+    <a href="<?= url_to('Articles::new') ?>">Create new article</a>
 
     <?php foreach ($articles as $article): ?>
         <article>
