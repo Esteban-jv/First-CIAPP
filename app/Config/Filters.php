@@ -34,6 +34,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+        'login'        => \App\Filters\Login::class, // This alias is for avoid especify the full namespace in the routes
     ];
 
     /**
@@ -103,5 +104,10 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [];
+    public array $filters = [
+        /* We moved this to the routes file */
+//        "login" => [
+//            "before" => [ "articles(/*)?", ] // same as articles or articles/* or articles/anything
+//        ],
+    ];
 }

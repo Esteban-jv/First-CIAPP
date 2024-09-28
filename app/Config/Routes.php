@@ -14,13 +14,15 @@ $routes->get('articles/(:num)/edit', 'Articles::edit/$1');
 $routes->put('articles/(:num)', 'Articles::update/$1');
 $routes->delete('articles/delete/(:num)', 'Articles::delete/$1');*/
 
-$routes->get('articles/(:num)/delete', 'Articles::confirmDelete/$1');
-$routes->resource('articles',['placeholder' => '(:num)']);
-
 service('auth')->routes($routes);
 
-$routes->get('set-password', 'Password::set', ['as' => 'set-password']);
-$routes->post('set-password', 'Password::update');
+$routes->group("", ["filter" => "login"], function($routes) {
+    $routes->get('articles/(:num)/delete', 'Articles::confirmDelete/$1');
+    $routes->resource('articles',['placeholder' => '(:num)'/*, "filter" => "login"*/]);
+
+    $routes->get('set-password', 'Password::set', ['as' => 'set-password']);
+    $routes->post('set-password', 'Password::update');
+});
 
 $routes->group('admin', ['namespace' => 'App\Controllers\Admin'], function($routes) {
     $routes->get('users', 'Users::index');
