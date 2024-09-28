@@ -18,3 +18,6 @@ $routes->get('articles/(:num)/delete', 'Articles::confirmDelete/$1');
 $routes->resource('articles',['placeholder' => '(:num)']);
 
 service('auth')->routes($routes);
+
+$routes->get('set-password', 'Password::set', ['as' => 'set-password']);
+$routes->post('set-password', 'Password::update');
