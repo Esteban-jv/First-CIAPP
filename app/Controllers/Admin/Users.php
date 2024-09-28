@@ -46,6 +46,21 @@ class Users extends BaseController
         return redirect()->back()->with('message', 'User has been change ban status');
     }
 
+    public function groups($id)
+    {
+        $user = $this->getUserOr404($id);
+
+        if ($this->request->is('post')) {
+            $groups = $this->request->getPost('groups') ?? [];
+            $user->syncGroups(...$groups);
+            return redirect()->to("admin/users/$id")->with('message', 'User groups have been updated');
+        }
+
+        return view('Admin\Users\groups', [
+            'user' => $user,
+        ]);
+    }
+
     private function getUserOr404($id): User
     {
         $user = $this->userModel->find($id);

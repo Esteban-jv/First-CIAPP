@@ -4,7 +4,7 @@
 
 <?= $this->section("content") ?>
 
-<h1>User</h1>
+<h1>User Groups</h1>
 
 <dl>
     <dt>First name</dt>
@@ -15,6 +15,15 @@
     <dd><?= $user->active ?></dd>
     <dt>Created at</dt>
     <dd><?= $user->created_at->humanize() ?></dd>
+    <dt>Groups</dt>
+    <dd>
+        <ul>
+            <?php foreach ($user->getGroups() as $group) : ?>
+                <li><?= $group ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </dd>
+    <a href="<?= url_to("Admin\Users::groups", $user->id) ?>">Edit groups</a>
 </dl>
 
 <?= form_open("admin/users/".$user->id."/toggle-ban") ?>

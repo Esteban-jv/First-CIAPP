@@ -11,7 +11,9 @@
         <?php if (auth()->loggedIn()): ?>
             Hello, <?= auth()->user()->first_name ?>
             <a href="<?= url_to('Articles::index') ?>">Manage articles</a>
-            <a href="<?= url_to('admin/users') ?>">Manage users</a>
+            <?php if (auth()->user()->inGroup('admin')): ?>
+                <a href="<?= url_to('admin/users') ?>">Manage users</a>
+            <?php endif; ?>
             <a href="<?= url_to('logout') ?>">Logout</a>
         <?php else: ?>
             <a href="<?= url_to('login') ?>">Login</a>
@@ -19,6 +21,9 @@
     </nav>
     <?php if (session()->has('message')): ?>
         <p><?= session('message') ?></p>
+    <?php endif; ?>
+    <?php if (session()->has('error')): ?>
+        <p><?= session('error') ?></p>
     <?php endif; ?>
     <?= $this->renderSection('content') ?>
 </body>
