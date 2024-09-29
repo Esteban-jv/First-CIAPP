@@ -17,10 +17,15 @@ class Articles extends BaseController
 
     public function index(): string
     {
-        $data = $this->model->findAll();
-//        dd($data);
+        $data = $this->model
+            ->select('articles.*, users.first_name as author')
+            ->join('users','users.id = articles.user_id')
+            ->paginate(3);
 
-        return view('Articles/index', ['articles' => $data]);
+        return view('Articles/index', [
+            'articles' => $data,
+            'pager' => $this->model->pager
+        ]);
     }
 
     public function show($id)

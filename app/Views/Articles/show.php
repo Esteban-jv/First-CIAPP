@@ -7,6 +7,8 @@
 
     <p><?= esc($article->content) ?></p>
 
-    <a href="<?= url_to('Articles::edit',$article->id) ?>">Edit</a>
-    <a href="<?= url_to('Articles::confirmDelete',$article->id) ?>">Delete</a>
+    <?php if ($article->isOwner()): ?>
+        <a href="<?= url_to('Articles::edit',$article->id) ?>">Edit</a>
+        <a href="<?= url_to('Articles::confirmDelete',$article->id) ?>">Delete</a>
+    <?php endif ?>
 <?= $this->endSection() ?>

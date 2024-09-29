@@ -25,4 +25,14 @@ class ArticleModel extends Model
             'required' => 'Please enter the content.',
         ],
     ];
+
+    protected $useTimestamps = true;
+
+    protected $beforeInsert = ['setUserId'];
+
+    protected function setUserId(array $data)
+    {
+        $data['data']['user_id'] = auth()->user()->id;
+        return $data;
+    }
 }

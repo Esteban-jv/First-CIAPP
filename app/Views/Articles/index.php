@@ -13,7 +13,10 @@
                     <?= esc($article->title) ?>
                 </a>
             </h2>
+            <em>By <?= esc($article->author) ?></em>
             <p><?= esc($article->content) ?></p>
         </article>
     <?php endforeach ?>
+
+    <?= $pager->simpleLinks() ?>
 <?= $this->endSection() ?>
