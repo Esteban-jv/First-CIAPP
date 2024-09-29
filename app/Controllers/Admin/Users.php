@@ -61,6 +61,21 @@ class Users extends BaseController
         ]);
     }
 
+    public function permissions($id)
+    {
+        $user = $this->getUserOr404($id);
+
+        if ($this->request->is('post')) {
+            $permissions = $this->request->getPost('permissions') ?? [];
+            $user->syncPermissions(...$permissions);
+            return redirect()->to("admin/users/$id")->with('message', 'User permnissions have been updated');
+        }
+
+        return view('Admin\Users\permissions', [
+            'user' => $user,
+        ]);
+    }
+
     private function getUserOr404($id): User
     {
         $user = $this->userModel->find($id);

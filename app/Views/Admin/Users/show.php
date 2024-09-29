@@ -24,6 +24,15 @@
         </ul>
     </dd>
     <a href="<?= url_to("Admin\Users::groups", $user->id) ?>">Edit groups</a>
+    <dt>Permissions</dt>
+    <dd>
+        <ul>
+            <?php foreach ($user->getPermissions() as $permission) : ?>
+                <li><?= $permission ?></li>
+            <?php endforeach; ?>
+        </ul>
+    </dd>
+    <a href="<?= url_to("Admin\Users::permissions", $user->id) ?>">Edit permissions</a>
 </dl>
 
 <?= form_open("admin/users/".$user->id."/toggle-ban") ?>

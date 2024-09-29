@@ -29,4 +29,5 @@ $routes->group('admin', ['namespace' => 'App\Controllers\Admin', "filter" => "gr
     $routes->get('users/(:num)', 'Users::show/$1');
     $routes->post('users/(:num)/toggle-ban', 'Users::toggleBan/$1');
     $routes->match(["get","post"],'users/(:num)/groups', 'Users::groups/$1');
+    $routes->match(["get","post"],'users/(:num)/permissions', 'Users::permissions/$1');
 });

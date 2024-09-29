@@ -72,13 +72,17 @@ class AuthGroups extends ShieldAuthGroups
      * If a permission is not listed here it cannot be used.
      */
     public array $permissions = [
-        'admin.access'        => 'Can access the sites admin area',
+        /*'admin.access'        => 'Can access the sites admin area',
         'admin.settings'      => 'Can access the main site settings',
         'users.manage-admins' => 'Can manage other admins',
         'users.create'        => 'Can create new non-admin users',
         'users.edit'          => 'Can edit existing non-admin users',
         'users.delete'        => 'Can delete existing non-admin users',
-        'beta.access'         => 'Can access beta-level features',
+        'beta.access'         => 'Can access beta-level features',*/
+
+        // Custom
+        "articles.edit" => "Can edit any articles",
+        "articles.delete" => "Can delete any articles",
     ];
 
     /**
@@ -90,7 +94,7 @@ class AuthGroups extends ShieldAuthGroups
      * This defines group-level permissions.
      */
     public array $matrix = [
-        'superadmin' => [
+        /*'superadmin' => [
             'admin.*',
             'users.*',
             'beta.*',
@@ -112,6 +116,9 @@ class AuthGroups extends ShieldAuthGroups
         'user' => [],
         'beta' => [
             'beta.access',
+        ],*/
+        "admin" => [
+            "articles.*",
         ],
     ];
 }
